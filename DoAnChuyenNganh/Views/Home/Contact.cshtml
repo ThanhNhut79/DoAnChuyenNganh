@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="main-content">
+    <div class="row">
+        <div class="span5" style="margin: 150px">
+            <div>
+                <h3>Thông tin liên hệ</h3>
+                <p>
+                    <strong>Địa chỉ:</strong>&nbsp;123, Nguyễn Tri Phương, Quận 5<br>
+                    <strong>Điện thoại:</strong>&nbsp;+(84)568 555 100<br>
+                    <strong>Email:</strong>&nbsp;<a href="#">nhitruong228@gmail.com</a> <br>
+                    <strong>Thời gian làm việc:</strong>&nbsp;Tất cả các ngày trong tuần <br>
+                    <strong>Mạng xã hội:</strong>
+
+                    <a href="https://www.facebook.com/tuyen.phan.3154">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-facebook-messenger"></i>
+                    </a>
+                    <a href="https://www.instagram.com/imheulwenhpodie/">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                </p>
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+    <div class="span7">
+        <p> <b>Để lại tin nhắn để giúp chúng tôi có thể phục vụ bạn tốt hơn</b> </p>
+        <form method="post" action="#">
+            @Html.ValidationSummary(true)
+            <fieldset>
+                @* Họ Tên *@
+                <div class="clearfix">
+                    <label for="name"><span>Họ Tên <span style="color: red;"> *</span></span></label>
+                    <div class="input">
+                        <input type="text" placeholder="Họ tên" class="input-xlarge" maxlength="50" name="name" required>
+                    </div>
+                </div>
+                @* Số điện thoại *@
+                <div class="clearfix">
+                    <label for="name"><span>Số điên thoại <span style="color: red;"> *</span></span></label>
+                    <div class="input">
+                        <input type="text" placeholder="Số điện thoại" class="input-xlarge" name="sdt">
+                    </div>
+                </div>
+                @* Email  *@
+                <div class="clearfix">
+                    <label for="email"><span>Email <span style="color: red;"> *</span></span></label>
+                    <div class="input">
+                        <input type="email" placeholder="Địa chỉ Email" class="input-xlarge" name="email" required>
+                    </div>
+                </div>
+                @* Nội dung là đây  *@
+                <div class="clearfix">
+                    <label for="message"><span>Nội dung <span style="color: red;"> *</span></span></label>
+                    <div class="input">
+                        <textarea tabindex="3" class="input-xlarge" id="message" name="body" rows="3" placeholder="Viết gì đó ... "></textarea>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button tabindex="3" type="submit" class="btn btn-primary">Gửi tin nhắn</button> <br />
+                </div>
+            </fieldset>
+        </form>
+    </div>}
+    </div>
+</section>
+<hr width="100%" />
+<section class="google_map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.741327823639!2d106.66733141431693!3d10.754408162541639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752efbed4785c9%3A0x77a7750eb9d7ab03!2zMTIzIMSQLiBOZ3V54buFbiBUcmkgUGjGsMahbmcsIFBoxrDhu51uZyA3LCBRdeG6rW4gNSwgVGjDoG5oIHBo4buRIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1639031281498!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+

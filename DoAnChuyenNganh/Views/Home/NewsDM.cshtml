@@ -1,0 +1,174 @@
+﻿@using DoAnChuyenNganh.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<TinTuc>
+@{
+    ViewBag.Title = "NewsDM";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+
+<section class="w3l-hero-headers-9">
+    <div class="slide header11" data-selector="header11">
+        <div class="container">
+            <div class="banner-text ">
+                <h5 class=" ">
+                    Tất cả những vật nuôi
+                    <br><strong>Cần được chăm sóc đặc biệt</strong>
+                </h5>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="w3l-teams-15">
+    <div class="team-single-main editContent">
+        <div class="container">
+            <div class="row">
+                <div class="column2 col-lg-6">
+                    <img src="~/Content/assets/images/5.jpg" alt="product" class="img-responsive ">
+                </div>
+                <div class="column2 image-text col-lg-6">
+                    <h3 class="team-head editContent">Chúng mình sẽ làm <span class="color-text editContent">cho chúng thật hạnh phúc.</span></h3>
+                    <p class="para editContent text ">
+                        Chó là người thầy vĩ đại nhất dạy cho bạn về sự trung thành.
+                        Mỗi chú mèo là biểu tượng tuyệt đẹp của sự quyến rũ và độc lập. Chúng mang lại cho nhân loại sức cảm nhận về tình bạn và tình thương tuyệt vời.
+                    </p>
+                    <div class="pet-animals">
+                        <div class="pet-grid one-img">
+                            <h6><a href="#page">Chi phí hợp lí</a></h6>
+                            <p class="para">
+                                Phù hợp với "sen" mới bắt đầu chăm "boss".
+                            </p>
+                        </div>
+                        <div class="pet-grid two-img">
+                            <h6><a href="#page">Boss khỏe mạnh</a></h6>
+                            <p class="para">
+                                Mang lại sự hài lòng tốt nhất cho "boss".
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+<section class="w3l-specification-6">
+    <div class="specification-layout editContent">
+        <div class="container">
+            <div class=" row">
+                <div class="my-bio col-lg-6">
+                    <h3 class="title-big">Cung cấp dịch vụ<span class="color-text editContent"> thoải mái và an toàn </span>cho vật nuôi</h3>
+                    <div class="hair-make">
+                        <h5>Chất lượng & Chăm sóc</h5>
+                        <p class="para mt-2">Mang lại sự hài lòng về chất lượng và sự chăm sóc tuyệt đối, cũng như là sự tâm huyết của chúng mình</p>
+                    </div>
+                    <div class="hair-make">
+                        <h5>Chải & Tỉa lông</h5>
+                        <p class="para mt-2">Đem lại cho chúng một bộ lông hoàn toàn mới mẻ và mượt mà không đem lại bệnh tật cho vật nuôi.</p>
+                    </div>
+                    <div class="hair-make">
+                        <h5>Cắt móng & Làm sạch tai</h5>
+                        <p class="para mt-2">Cho chúng cảm giác sạch sẽ, gọn gàng để tránh những bệnh viêm tai của cún và mèo.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 position-relative back-image">
+                    <img src="~/Content/assets/images/7.jpg" alt="product" class="img-responsive ">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="w3l-covers-18">
+    <div class="covers-main editContent">
+        <div class="main-titles-head text-center">
+            <h3 class="header-name editContent">
+                Pet Best
+            </h3>
+        </div>
+        <div class="container">
+            <div class="gallery-image">
+                @helper Truncate(string input, int length)
+                {
+                    if (input.Length < length)
+                    {
+                        @input
+                    }
+                    else
+                    {
+                        @input.Substring(0, length)<text> . . . </text>
+                    }
+                }
+                @foreach (var item in Model)
+                {
+                    <div class="img-box">
+
+                        <a href="#page"> <img src="~/Content/images/@item.Anh" alt="product" class="img-responsive "></a>
+
+                        <div class="caption">
+                            <h6><a href="@Url.Action("BaiViet", "Home", new { id = item.MaTinTuc})">@Truncate(item.TieuDe, 50)</a></h6>
+                            <p class="para">@Truncate(item.MoTa, 50)</p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+<div style="display: flex; text-align: center ; justify-content: center" >
+    <ul>
+        <li class="active" > @Html.PagedListPager(Model, page => Url.Action("NewsDM", new { page = page }))</li>
+    </ul>
+</div>
+<section class="w3l-footer-29-main">
+    <div class="footer-29 py-5">
+        <div class="container py-lg-4">
+            <div class="row footer-top-29">
+                <div class="col-lg-5 col-md-6 col-sm-12 footer-list-29 footer-1">
+                    <h2><a href="index.html" class=""><span class="fa fa-paw mr-2" aria-hidden="true"></span> Pet Sitter</a></h2>
+                    <p>Adipisicing elit. Lauda ntium, archi tecto iure Lorem incidunt iosam qui quo moll itia veniam recus andae archi tecto earum suscipit exce pturi dicta nemo quam.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-5 footer-list-29 footer-3">
+                    <h6 class="footer-title-29">Get in Touch</h6>
+
+                    <div class="column2">
+                        <div class="href1">
+                            <span>E-mail: nhitruong228@gmail.com</span>
+                        </div>
+                        <div class="href2">
+                            <span>Phone:</span>
+                        </div>
+                        <div>
+                            <p class="contact-para">
+                                123 Nguyễn Tri Phương, Quận 10,
+                                Việt Nam.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-7 footer-list-29 footer-4">
+                    <h6 class="footer-title-29">Newsletter </h6>
+                    <p>
+                        Enter your email and receive the latest news from us.
+                        We'll never share your email address
+                    </p>
+
+                    <form action="#" class="subscribe" method="post">
+                        <input type="email" name="email" placeholder="Your Email Address" required="">
+                        <button><span class="fa fa-envelope-o"></span></button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="bottom-copies text-center">
+        <div class="container">
+            <p class="copy-footer-29">© 2020 Pet Sitter. All rights reserved | Designed by <a href="https://w3layouts.com">W3layouts</a></p>
+        </div>
+    </div>
+</section>
+

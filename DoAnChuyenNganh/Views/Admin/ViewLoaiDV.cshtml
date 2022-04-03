@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "ViewLoaiDV";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-page">
+    <div class="forms">
+        <div class=" form-grids row form-grids-right">
+            <div class="widget-shadow " data-example-id="basic-forms">
+                <div class="form-title">
+                    <h4>Thêm mới dịch vụ</h4>
+                </div>
+                @using (Html.BeginForm("ThemDV", "Admin"))
+                {
+                    <div class="form-body">
+
+                        <form class="form-horizontal">
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Tên dịch vụ</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="TenLoaiDV" placeholder="Nhập tên dịch vụ" required />
+                                </div>
+                            </div>
+                            
+                            <hr />
+                            <br />
+                            <div class="col-sm-offset-2">
+                                <br />
+                                <input type="submit" class="btn btn-default" value="Thêm dịch vụ" />
+                            </div>
+                        </form>
+                    </div>}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-page">
+    <div class="tables">
+        <div class="bs-example widget-shadow" data-example-id="hoverable-table">
+            <h4>Dịch vụ</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Mã dịch vụ</th>
+                        <th>Tên dịch vụ</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MaLoaiDV</td>
+                            <td>@item.TenLoaiDV</td>
+                            <td>
+
+                                <a href="@Url.Action("SuaLDV","Admin", new { id = item.MaLoaiDV})" class="far fa-edit"></a>&emsp;&emsp;
+                                <a href="@Url.Action("XoaLDV","Admin",new { id = item.MaLoaiDV})" class="far fa-trash-alt"></a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

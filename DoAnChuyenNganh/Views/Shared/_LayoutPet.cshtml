@@ -1,0 +1,337 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <title>Shopin A Ecommerce Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Custom Theme files -->
+
+    <link href="~/Content/fonts/fontawesome-free-5.15.4/fontawesome-free-5.15.4/css/all.min.css" rel="stylesheet" />
+    <!--theme-style-->
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Shopin Responsive web template, Bootstrap Web Templates, Flat Web Templates, AndroId Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--theme-style-->
+    <link href="~/Content/css/style4.css" rel="stylesheet" type="text/css" media="all" />
+    <!--//theme-style-->
+    <script src="~/Content/js/jquery.min.js"></script>
+    <!--- start-rate---->
+    <script src="~/Content/js/jstarbox.js"></script>
+    <link rel="stylesheet" href="~/Content/css/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
+    <script type="text/javascript">
+        jQuery(function () {
+            jQuery('.starbox').each(function () {
+                var starbox = jQuery(this);
+                starbox.starbox({
+                    average: starbox.attr('data-start-value'),
+                    changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+                    ghosting: starbox.hasClass('ghosting'),
+                    autoUpdateAverage: starbox.hasClass('autoupdate'),
+                    buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+                    stars: starbox.attr('data-star-count') || 5
+                }).bind('starbox-value-changed', function (event, value) {
+                    if (starbox.hasClass('random')) {
+                        var val = Math.random();
+                        starbox.next().text(' ' + val);
+                        return val;
+                    }
+                })
+            });
+        });
+    </script>
+    <!---//End-rate---->
+    <script>
+        isBool = true;
+        function show() {
+            if (isBool) {
+                document.getElementById("Matkhau").setAttribute("type", "text");
+                isBool = false;
+            } else {
+                document.getElementById("Matkhau").setAttribute("type", "password");
+                isBool = true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <!--header-->
+
+    <div class="header">
+        <div class="container">
+            <div class="head">
+                <div class=" logo">
+                    <a href="@Url.Action("Index","SalePet")"><img src="~/Content/images/ban3.jpg" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div class="header-top">
+            <div class="container">
+                <div class="col-sm-5 col-md-offset-2  header-login">
+                    <ul>
+
+                        @if (Session["tk"] != null)
+                        {
+                            <li><a href="@Url.Action("ThongTinChiTiet","NguoiDung", new { id = Session["matv"]})" style="font-weight:bold">@Session["tendangnhap"] </a></li>
+                            <li><a href="@Url.Action("SignOut","NguoiDung")">Đăng xuất</a></li>
+                            <li><a href="@Url.Action("LichSuMH","SalePet", new { id = Session["matv"]})">Lịch sử mua hàng</a></li>
+                            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("DangKy","NguoiDung")">Đăng kí</a></li>
+                            <li><a href="@Url.Action("DangNhap","NguoiDung")">Đăng nhập</a></li>
+                        }
+
+                    </ul>
+                </div>
+
+                <div class="col-sm-5 header-social">
+                    <form method="POST" action="/SalePet/Search">
+                        <input type="text" name="keyword" id="timkiem" Placeholder="Tìm kiếm ..">
+                        <button name="search" id="search" type="submit">Tim kiếm</button>
+                    </form>
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="head-top">
+
+                <div class="col-sm-8 col-md-offset-2 h_menu4">
+                    <nav class="navbar nav_bottom" role="navigation">
+
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header nav_2">
+                            <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                            <ul class="nav navbar-nav nav_1">
+                                <li><a class="color" href="@Url.Action("TatCaSanPham","SalePet")">Tất cả sản phẩm</a></li>
+
+                                <li class="dropdown mega-dropdown active">
+                                    <a class="color1" href="#" class="dropdown-toggle" data-toggle="dropdown">Shop cho cún <span class="caret"></span></a>
+                                    <div class="dropdown-menu ">
+                                        <div class="menu-top">
+                                            <div class="col1">
+                                                <div class="h_nav">
+
+                                                    <ul>
+                                                        <li><a href="/SalePet/SanPhamTheoLoai/1">Thức ăn khô cho cún</a></li>
+                                                        <li><a href="/SalePet/SanPhamTheoLoai/3">Pate cho cún</a></li>
+                                                        <li><a href="/SalePet/SanPhamTheoLoai/13">Khay cho cún</a></li>
+                                                        <li><a href="/SalePet/SanPhamTheoLoai/11">Dụng cụ</a></li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="col1 col5">
+                                                <img src="~/Content/images/phanloai1.jpg" class="img-responsive" alt="">
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown mega-dropdown active">
+                                    <a class="color2" href="#" class="dropdown-toggle" data-toggle="dropdown">Shop cho mèo <span class="caret"></span></a>
+                                    <div class="dropdown-menu mega-dropdown-menu">
+                                        <div class="menu-top">
+                                            <div class="col1">
+                                                <div class="h_nav">
+
+                                                    <ul>
+                                                        <li><a href="/SalePet/SanPhamTheoLoai/9">Thức ăn khô cho mèo</a></li>
+                                                        <li><a href="/SalePet/SanPhamTheoLoai/8">Pate cho mèo</a></li>
+                                                        <li><a href="/SalePet/SanPhamTheoLoai/7">Cát mèo</a></li>
+                                                        <li><a href="/SalePet/SanPhamTheoLoai/10">Dụng cụ</a></li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="col1 col5">
+                                                <img src="~/Content/images/phanloai2.jpg" class="img-responsive" alt="">
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+
+                    </nav>
+                </div>
+                <div class="col-sm-2 search-right">
+                    <ul class="heart">
+                        <li>
+                            <a href="wishlist.html">
+                                <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                        <li><a class="play-icon popup-with-zoom-anim" href="#small-dialog"><i class="glyphicon glyphicon-search"> </i></a></li>
+                    </ul>
+                    <div class="cart box_1">
+                        @Html.Action("GioHangPartial", "GioHang")
+
+                    </div>
+                    <div class="clearfix"> </div>
+
+                    <!----->
+                    <!---pop-up-box---->
+                    <link href="~/Content/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+                    <script src="~/Content/js/jquery.magnific-popup.js" type="text/javascript"></script>
+                    <!---//pop-up-box---->
+                    <div id="small-dialog" class="mfp-hide">
+                        <div class="search-top">
+                            <div class="login-search">
+                                <input type="submit" value="">
+                                <input type="text" value="Search.." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search..';}">
+                            </div>
+                            <p>Shopin</p>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $('.popup-with-zoom-anim').magnificPopup({
+                                type: 'inline',
+                                fixedContentPos: false,
+                                fixedBgPos: true,
+                                overflowY: 'auto',
+                                closeBtnInside: true,
+                                preloader: false,
+                                midClick: true,
+                                removalDelay: 300,
+                                mainClass: 'my-mfp-zoom-in'
+                            });
+
+                        });
+                    </script>
+                    <!----->
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <!--//footer-->
+    <div class="footer">
+        <div class="footer-middle">
+            <div class="container">
+                <div class="col-md-3 footer-middle-in">
+                    <a href="@Url.Action("Index","SalePet")"><img src="~/Content/images/logooo.jpg" alt=""></a>
+                    <p>Suspendisse sed accumsan risus. Curabitur rhoncus, elit vel tincidunt elementum, nunc urna tristique nisi, in interdum libero magna tristique ante. adipiscing varius. Vestibulum dolor lorem.</p>
+                </div>
+
+                <div class="col-md-3 footer-middle-in">
+                    <h6>Information</h6>
+                    <ul class=" in">
+                        <li><a href="404.html">About</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="contact.html">Site Map</a></li>
+                    </ul>
+                    <ul class="in in1">
+                        <li><a href="#">Order History</a></li>
+                        <li><a href="wishlist.html">Wish List</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                
+                <div class="col-md-3 footer-middle-in">
+                    <h6>Newsletter</h6>
+                    <span>Sign up for News Letter</span>
+                    <form>
+                        <input type="text" value="Enter your E-mail" onfocus="this.value='';" onblur="if (this.value == '') {this.value ='Enter your E-mail';}">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <ul class="footer-bottom-top">
+                    <li><a href="#"><img src="~/Content/images/f1.png" class="img-responsive" alt=""></a></li>
+                    <li><a href="#"><img src="~/Content/images/f2.png" class="img-responsive" alt=""></a></li>
+                    <li><a href="#"><img src="~/Content/images/f3.png" class="img-responsive" alt=""></a></li>
+                </ul>
+                <p class="footer-class">&copy; 2021 Shopin. All Rights Reserved | Design by  <a href="https://localhost:44365/SalePet" target="_blank">Pet Best</a> </p>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!--//footer-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Content/js/simpleCart.min.js"></script>
+    <!-- slide -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <!--light-box-files -->
+    <script src="~/Content/js/jquery.chocolat.js"></script>
+    <link rel="stylesheet" href="~/Content/css/chocolat.css" type="text/css" media="screen" charset="utf-8">
+    <!--light-box-files -->
+    <script type="text/javascript" charset="utf-8">
+        $(function () {
+            $('a.picture').Chocolat();
+        });
+    </script>
+    <div id="backtop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop()) {
+                    $('#backtop').fadeIn();
+                } else {
+                    $('#backtop').fadeOut();
+                }
+            });
+            $("#backtop").click(function () {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 500);
+            });
+        });
+    </script>
+    <style>
+        #backtop {
+            width: 50px;
+            height: 50px;
+            background: tomato;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 40px;
+            right: 20px;
+            cursor: pointer;
+        }
+    </style>
+
+</body>
+
+</html>

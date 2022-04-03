@@ -1,0 +1,9 @@
+﻿<a href="@Url.Action("GioHang","GioHang")">
+    <h3>
+        <div class="total">
+            @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ
+        </div>
+        <img src="~/Content/images/cart.png" alt="" />
+    </h3>
+</a>
+<p><a href="javascript:;" class="simpleCart_empty">(@ViewBag.TongSoLuong)</a></p>

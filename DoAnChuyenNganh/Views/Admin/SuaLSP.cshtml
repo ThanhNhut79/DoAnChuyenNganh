@@ -1,0 +1,42 @@
+﻿@model DoAnChuyenNganh.Models.LoaiSanPham
+
+@{
+    ViewBag.Title = "SuaLSP";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-page">
+    <div class="forms">
+        <div class=" form-grids row form-grids-right">
+            <div class="widget-shadow " data-example-id="basic-forms">
+                <div class="form-title">
+                    <h4>Chi tiết loại sản phẩm @Model.MaLoaiSP</h4>
+                </div>
+                <br />
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.MaLoaiSP)
+
+                        <div class="form-group">
+                            <span class="control-label col-md-2">Tên loại</span>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.TenLoai, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TenLoai, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Lưu thay đổi" class="btn btn-default" />
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

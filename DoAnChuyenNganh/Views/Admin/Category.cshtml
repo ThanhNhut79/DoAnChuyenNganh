@@ -1,0 +1,71 @@
+﻿@model IEnumerable<DoAnChuyenNganh.Models.LoaiSanPham>
+
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-page">
+    <div class="forms">
+        <div class=" form-grids row form-grids-right">
+            <div class="widget-shadow " data-example-id="basic-forms">
+                <div class="form-title">
+                    <h4>Loại Sản Phẩm</h4>
+                </div>
+                @using (Html.BeginForm("ThemLoaiSP", "Admin"))
+                {
+                    <div class="form-body">
+
+                        <form class="form-horizontal">
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Tên loại</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="LoaiSanPham" placeholder="Nhập tên thương hiệu" required />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-sm-offset-2">
+                                <br />
+                                <input type="submit" class="btn btn-default" value="Thêm loại sản phẩm mới" />
+                            </div>
+                        </form>
+                    </div>
+                 }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-page">
+    <div class="tables">
+        <div class="bs-example widget-shadow" data-example-id="hoverable-table">
+            <h4>Loại sản phẩm</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Mã loại</th>
+                        <th>Tên loại</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.MaLoaiSP</td>
+                            <td>@item.TenLoai</td>
+                            <td>
+
+                                <a href="@Url.Action("SuaLSP","Admin", new { id = item.MaLoaiSP})" class="far fa-edit"></a>&emsp;&emsp;
+                                <a href="@Url.Action("XoaLSP","Admin",new { id = item.MaLoaiSP})" class="far fa-trash-alt"></a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,99 @@
+﻿@using DoAnChuyenNganh.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SanPham>
+@{ ViewBag.Title = "SanPhamTheoLoai";
+                Layout = "~/Views/Shared/_LayoutPet.cshtml"; }
+
+@helper Truncate(string input, int length)
+{if (input.Length < length)
+                    {
+    @input }
+                    else
+                    {
+    @input.Substring(0, length)<text> . . . </text>}
+}
+@* begin--phân giá *@
+<form style="text-align: right; padding-right: 159px" method="get" action="/SalePet/PriceFilter">
+    <div class="khoang-gia">Khoảng giá</div>
+    <div style="margin-top: -20px">
+        <div class="input-gia-cahai">
+            <input type="text" min="0" pattern="[0-9]*" maxlength="13" class="input-gia--khung1" placeholder="₫ TỪ" value="" name="from">
+            <span class=""></span>
+            <input type="text" min="0" pattern="[0-9]*" maxlength="13" class="input-gia--khung1" placeholder="₫ ĐẾN" value="" name="to">
+            @if (Model.Count > 0)
+            {
+<input type="hidden" value="@Model[0].MaLoaiSP" name="type" /> }
+else
+{
+
+
+<input type="hidden" value="@Context.Request.QueryString["type"]" name="type" />}
+        </div>
+    </div>
+    <button type="submit" class="btn--apdung">Áp dụng</button>
+</form>
+@* end--phân giá *@
+<div class="content">
+    <div class="container">
+        <!--products-->
+        <div class="content-mid">
+            <h3 style="text-align:center; font-family: Arial">Sản phẩm theo loại</h3>
+            <label class="line"></label>
+            <div class="mid-popular">
+                @foreach (var SanPhamTheoLoai in Model)
+                {
+    <div class="col-md-3 item-grid simpleCart_shelfItem">
+        <div class=" mid-pop">
+            <div class="pro-img">
+                <img src="~/Content/images/@SanPhamTheoLoai.HinhAnh" class="img-responsive" alt="">
+                <div class="zoom-icon ">
+                    <a class="picture" href="~/Content/images/@SanPhamTheoLoai.HinhAnh" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
+                    <a href="@Url.Action("chitietSP","SalePet", new { id = SanPhamTheoLoai.MaSP})"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+                </div>
+            </div>
+            <div class="mid-1">
+                <div class="women">
+                    <div class="women-top">
+                        <span>Đồ ăn cho chó</span>
+                        <h6><a href="@Url.Action("chitietSP","SalePet", new { id = SanPhamTheoLoai.MaSP})">@Truncate(SanPhamTheoLoai.TenSP, 40)</a></h6>
+                    </div>
+                    <div class="img item_add">
+                        <a href="@Url.Action("Themgiohang","GioHang", new { id = SanPhamTheoLoai.MaSP, strUrl = Request.Url.ToString() })"><img src="~/Content/images/ca.png" alt=""></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="mid-2">
+                    <p><label>@String.Format("{0:0,0}", SanPhamTheoLoai.GiaGoc) VND</label><em class="item_price">@String.Format("{0:0,0}", SanPhamTheoLoai.GiaBan) VND</em></p>
+
+
+                    <div class="clearfix"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>}
+
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+        <!--//products-->
+    </div>
+
+</div>
+<div style="margin: 20px 0; text-align: center">
+    <ul>
+        @if (ViewData["from"] == "" && ViewData["to"] == "")
+        {
+            <li class="active"> @Html.PagedListPager(Model, page => Url.Action("SanPhamTheoLoai", new { page = page }))</li>
+        }
+        else
+        {
+            if (Model.Count > 0)
+            {
+                <li class="active">@Html.PagedListPager(Model, page => Url.Action("PriceFilter", new { page = page, from = ViewData["from"], to = ViewData["to"], type = Context.Request.QueryString["type"] }))</li>
+            }
+        }
+    </ul>
+</div>
+

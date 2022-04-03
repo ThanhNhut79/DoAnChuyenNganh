@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "DatLich";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="w3l-clients">
+    <div class="main-w3">
+        <div class="container">
+            <div class="apply-grids-info ">
+                <div class="apply-gd-left ">
+                    <h3><span class="color-text editContent">Đặt lịch hẹn</span></h3>
+                    <div class="apply-text">
+                        <div class="apply-sec-info">
+                            <h5><a href="blog-single.html">Họ tên khách hàng</a></h5>
+                            <p class="para">
+                                @Model.HoTen
+                            </p>
+                        </div>
+                        <div class="apply-sec-info">
+                            <h5><a href="blog-single.html">Số điện thoại</a></h5>
+                            <p class="para">
+                                @Model.SDT
+                            </p>
+                        </div>
+                        <div class="apply-sec-info">
+                            <h5><a href="blog-single.html">Địa chỉ</a></h5>
+                            <p class="para">
+                                @Model.DiaChi
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="apply-form p-sm-5 p-4">
+                    @using (Html.BeginForm("DatLich", "Home")) { 
+                    <form action="#" method="post">
+                        <div class="admission-form">
+                            <div class="form-group">
+                                <b>Lịch hẹn</b>
+                                <input type="date" class="form-control" name="LichHen" required="">
+                            </div>
+                            <div class="form-group">
+                                <b>Loại dịch vụ</b>
+                                @Html.DropDownList("MaLoaiDV")
+                            </div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <b>Ghi chú</b>
+                            <textarea name="GhiChu" class="form-control" placeholder="Ghi chú ..." required=""></textarea>
+                        </div>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-primary submit action-button">Đặt lịch</button>
+                        </div>
+                    </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

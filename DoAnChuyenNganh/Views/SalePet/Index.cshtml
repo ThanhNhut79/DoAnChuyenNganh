@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPet.cshtml";
+}
+
+@helper Truncate(string input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text> . . . </text>
+    }
+}
+
+<div class="banner">
+    <div class="container">
+        <section class="rw-wrapper">
+            <h1 class="rw-sentence">
+            
+            </h1>
+        </section>
+    </div>
+</div>
+
+
+<div class="content">
+    <div class="container">
+        <!--products-->
+        <div class="content-mid">
+            <h3 style="text-align:center; font-family: Arial">Sản phẩm mới</h3>
+            <label class="line"></label>
+            <div class="mid-popular">
+                @foreach (var sanphammoi in Model)
+                {
+                    <div class="col-md-3 item-grid simpleCart_shelfItem">
+                        <div class=" mid-pop">
+                            <div class="pro-img">
+                                <img src="~/Content/images/@sanphammoi.HinhAnh" class="img-responsive" alt="">
+                                <div class="zoom-icon ">
+                                    <a class="picture" href="~/Content/images/@sanphammoi.HinhAnh" rel="title" class="b-link-stripe b-animate-go  thickbox"><i class="glyphicon glyphicon-search icon "></i></a>
+                                    <a href="@Url.Action("chitietSP","SalePet", new { id = sanphammoi.MaSP})"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+                                </div>
+                            </div>
+                            <div class="mid-1">
+                                <div class="women">
+                                    <div class="women-top">
+                                        <span>Đồ ăn cho chó</span>
+                                        <h6><a href="@Url.Action("chitietSP","SalePet", new { id = sanphammoi.MaSP})">@Truncate(sanphammoi.TenSP, 10)</a></h6>
+                                    </div>
+                                    <div class="img item_add">
+                                        <a href="@Url.Action("Themgiohang","GioHang", new { id = sanphammoi.MaSP, strUrl = Request.Url.ToString() })"><i class="fas fa-shopping-bag" style=" padding: 10px; color: #fff; background-color: #347ab6;"></i></a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="mid-2">
+                                    <p><label>@String.Format("{0:0,0}", sanphammoi.GiaGoc)VND</label><em class="item_price">@String.Format("{0:0,0}", sanphammoi.GiaBan)VND</em></p>
+                                    
+
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>}
+
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+        <!--//products-->
+    </div>
+</div>

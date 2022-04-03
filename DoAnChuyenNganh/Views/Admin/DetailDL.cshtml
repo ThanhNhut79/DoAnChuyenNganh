@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "DetailDL";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="main-page">
+    <div class="forms">
+        <div class=" form-grids row form-grids-right">
+            <div class="widget-shadow " data-example-id="basic-forms">
+                <div class="form-title">
+                    <h3>Chi tiết lịch hẹn</h3>
+                </div>
+                <br />
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt>Mã lịch hẹn:</dt>
+                        <dd>@Model.MaDL</dd>
+
+                        <dt>Tên thành viên:</dt>
+                        <dd>@Model.HoTen</dd>
+
+                        <dt>Số điện thoại:</dt>
+                        <dd>@Model.SDT</dd>
+
+                        <dt>Lịch hẹn: </dt>
+                        <dd>@String.Format("{0:dd/MM/yyyy}", Model.LichHen)</dd>
+
+                        <dt>Ghi chú: </dt>
+                        <dd>@Model.GhiChu</dd>
+
+                        <dt>Loại dịch vụ: </dt>
+                        <dd>@Model.LoaiDV.TenLoaiDV</dd>
+
+                        <dt>Trạng thái: </dt>
+                        <dd>@Model.TrangThaiDatLich.TenTrangThaiDL</dd>
+
+                    </dl>
+                        <hr />
+                   
+                    @Html.ActionLink("Trở lại", "ViewDatLich")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

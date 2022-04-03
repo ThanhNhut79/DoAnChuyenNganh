@@ -1,0 +1,64 @@
+﻿@using DoAnChuyenNganh.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<DonDatHang>
+
+@{
+    ViewBag.Title = "ViewDDH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-page">
+    <div class="tables">
+        <div class="bs-example widget-shadow" data-example-id="hoverable-table">
+            <div style="display:inline-block;width:100%">
+                <div style="float:right">
+                    <form action="/Admin/TimKiem" method="post">
+                        <input type="text" name="keyword" />
+                        <button type="submit">Tìm kiếm</button>
+                    </form>
+                </div>
+            </div>
+            <hr />
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Người nhận</th>
+                        <th>SĐT</th>
+                        <th>Địa chỉ </th>
+                        <th>Ngày đặt</th>
+                        <th>Ngày giao</th>
+                        <th>Thanh toán</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+        <tr>
+            <td>@item.MaDDH</td>
+            <td>@item.NguoiNhan</td>
+            <td>@item.SDT</td>
+            <td>@item.DiaChi</td>
+            <td>@String.Format("{0:dd/MM/yyyy}", item.NgayDat)</td>
+            <td>@String.Format("{0:dd/MM/yyyy}", item.NgayGiao)</td>
+            <td>@item.DaThanhToan</td>
+            <td>@item.TinhTrangGiaoHang1.TinhTrang</td>
+            <td>
+                <a href="@Url.Action("SuaDDH","Admin", new { id = item.MaDDH})" class="far fa-edit"></a> <br /> <br />
+                <a href="@Url.Action("Detail","Admin",new { id = item.MaDDH})" class="fas fa-info-circle"></a>
+            </td>
+        </tr>}
+                </tbody>
+                <nav>
+                    <ul class="pagination pagination-sm">
+
+                        <li>@Html.PagedListPager(Model, page => Url.Action("ViewDDH", new { page = page }))</li>
+                    </ul>
+                </nav>
+            </table>
+        </div>
+    </div>
+</div>
+

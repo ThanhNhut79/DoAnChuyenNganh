@@ -1,0 +1,77 @@
+﻿@model IEnumerable<DoAnChuyenNganh.Models.CT_DDH>
+@{
+    ViewBag.Title = "LichSuMH";
+    Layout = "~/Views/Shared/_LayoutDetail.cshtml";
+}
+
+<div class="banner-top">
+    <div class="container">
+        <h1>Single</h1>
+        <em></em>
+        <h2><a href="index.html">Home</a><label>/</label>Single</h2>
+    </div>
+</div>
+
+<div class="single">
+    <div class="container">
+        <table class="table">
+            <tr>
+                <th>
+                    Mã đơn hàng
+                </th>
+                <th>
+                    Ngày mua
+                </th>
+                <th>
+                    Tên Sản phẩm
+                </th>
+                <th>
+                    Hình ảnh
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Thành tiền
+                </th>
+                <th>
+                    Trạng thái
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.DonDatHang.MaDDH)
+    </td>
+
+    <td>
+        @String.Format("{0:dd/MM/yyyy}", item.DonDatHang.NgayDat)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.SanPham.TenSP)
+    </td>
+
+    <td>
+        <img src="~/Content/images/@item.SanPham.HinhAnh" width="100" />
+    </td>
+
+    <td style="font-weight:bold">
+        @Html.DisplayFor(modelItem => item.SoLuong)
+    </td>
+
+    <td>
+        @String.Format("{0:0,0}", item.DonGia)
+    </td>
+
+    <td style="color:red">
+        @Html.DisplayFor(modelItem => item.DonDatHang.TinhTrangGiaoHang1.TinhTrang)
+    </td>
+
+</tr>            }
+        </table>
+    </div>
+</div>
+
+

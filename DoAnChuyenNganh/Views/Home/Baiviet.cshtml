@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Baiviet";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<section class="w3l-content-with-photo-4" id="about">
+    <div class="content-with-photo4-block editContent">
+        <div class="container">
+            <div>
+                <h2>@Model.TieuDe</h2>
+                <p></p>
+                <br />
+                <p>@String.Format("{0:dd/MM/yyyy}", Model.NgayThem)</p>
+                <hr />
+                <p>@Html.Raw(Model.NoiDung)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
